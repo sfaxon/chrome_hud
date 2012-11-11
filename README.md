@@ -70,6 +70,16 @@ sudo vi /etc/default/tmpfs
 
 TMPFS_SIZE=20%
 
+# setup sinatra app 
+cd 
+git clone https://github.com/sfaxon/chrome_hud.git
+
+
+# setup sinatra app to start on boot
+cp ~/chrome_hud/sinatra_startup /etc/init.d/chrome_hud
+sudo chmod +x /etc/init.d/chrome_hud
+udo update-rc.d chrome_hud defaults
+
 # setup autologin
 http://elinux.org/RPi_Debian_Auto_Login
 
@@ -86,10 +96,13 @@ sudo vi /etc/rc.local
 Scroll to the bottom and add:
 su pi -c startx
 
-vi /etc/xdg/lxsession/LXDE/autostart
+sudo vi /etc/xdg/lxsession/LXDE/autostart
 @lxpanel --profile LXDE
 @pcmanfm --desktop --profile LXDE
 @xscreensaver -no-splash
-@usr/bin/chromium-browser --app=http://localhost:4567 --incognito
+@usr/bin/chromium-browser --app=http://localhost:9222 --incognito
+
+
+
 
 
