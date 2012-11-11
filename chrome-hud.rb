@@ -5,7 +5,8 @@ class ChromeHud < Sinatra::Base
     if params[:go]
       dest = params[:go] || "http://faxon.org"
       dest = dest.match(/^http:\/\//) ? dest : "http://#{dest}"
-	    page.navigate(dest)
+      system 'DISPLAY=:0.0 xdotool click 1'
+      page.navigate(dest)
     else
       local_ip
     end
