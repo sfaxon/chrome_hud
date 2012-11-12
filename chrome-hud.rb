@@ -1,14 +1,16 @@
+require 'sinatra'
+
 class ChromeHud < Sinatra::Base
   get '/' do
-    chrome = ChromeRemoteDebug::Client.new("127.0.0.1", 9222)
-	  page = chrome.pages.first
     if params[:go]
+      chrome = ChromeRemoteDebug::Client.new("127.0.0.1", 9222)
+  	  page = chrome.pages.first
       dest = params[:go] || "http://faxon.org"
       dest = dest.match(/^http:\/\//) ? dest : "http://#{dest}"
       system 'DISPLAY=:0.0 xdotool click 1'
       page.navigate(dest)
     else
-      local_ip
+      erb :index
     end
   end
 

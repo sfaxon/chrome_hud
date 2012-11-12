@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>welcome</title>
+  <style type="text/css">
+    body { 
+      background-color: white;
+      color: #333;
+      display: block;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      height: 1006px;
+      line-height: 20px;
+      margin: 0;
+      padding-bottom: 40px;
+      padding-top: 20px;
+      width: 1180px;
+    }
+    div.dialog {
+      background-color: transparent;
+      font-size: 72px;
+      font-weight: bold;
+      height: 144px;
+      line-height: 72px;
+      margin: 4em auto 0 auto;
+      text-align: center;
+      text-rendering: optimizelegibility;
+      width: 700px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="dialog">
+    <h1><%= local_ip %></h1>
+    <p>http://<%= local_ip %>/?go=someurl</p>
+  </div>
+</body>
+</html>
