@@ -7,7 +7,7 @@ class ChromeHud < Sinatra::Base
   	  page = chrome.pages.first
       dest = params[:go] || "http://faxon.org"
       dest = dest.match(/^http:\/\//) ? dest : "http://#{dest}"
-      system 'DISPLAY=:0.0 xdotool click 1'
+      system 'export DISPLAY=:0.0 && xdotool click 1'
       page.navigate(dest)
     else
       erb :index
